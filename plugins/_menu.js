@@ -8,6 +8,8 @@ const {
   bot,
   lang,
 } = require('../lib/')
+
+// ====================== HELP ======================
 bot(
   {
     pattern: 'help ?(.*)',
@@ -21,6 +23,7 @@ bot(
     const [date, time] = getDate()
 
     const CMD_HELP = [
+      '🛡️ SPIDER-NET SECURE-BOT 🛡️\n', // <<<<< AJOUT
       lang.plugins.menu.help.format(
         ctx.PREFIX,
         message.pushName,
@@ -53,6 +56,7 @@ bot(
   }
 )
 
+// ====================== LIST ======================
 bot(
   {
     pattern: 'list ?(.*)',
@@ -68,9 +72,11 @@ bot(
       .map((command) => `- *${command.name}*\n${command.desc}\n`)
       .join('\n')
 
-    await message.send(commandList)
+    await message.send(`🛡️ SPIDER-NET SECURE-BOT 🛡️\n\n${commandList}`)
   }
 )
+
+// ====================== MENU ======================
 bot(
   {
     pattern: 'menu ?(.*)',
@@ -93,7 +99,7 @@ bot(
     const sortedCommandKeys = Object.keys(commands).sort()
 
     const [date, time] = getDate()
-    let msg = lang.plugins.menu.menu.format(
+    let msg = `🛡️ SPIDER-NET SECURE-BOT 🛡️\n\n` + lang.plugins.menu.menu.format(
       ctx.PREFIX,
       message.pushName,
       time,
